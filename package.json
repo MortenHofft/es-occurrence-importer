@@ -1,0 +1,26 @@
+{
+  "name": "es-occurrence-importer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MortenHofft/es-occurrence-importer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MortenHofft/es-occurrence-importer/issues"
+  },
+  "homepage": "https://github.com/MortenHofft/es-occurrence-importer#readme",
+  "dependencies": {
+    "csv-parse": "^3.0.0",
+    "elasticsearch": "^15.1.1",
+    "lodash": "^4.17.11",
+    "stream-transform": "^1.0.2",
+    "xml2js": "^0.4.19"
+  }
+}

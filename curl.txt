@@ -1,0 +1,71 @@
+curl -XDELETE 'localhost:9200/fungi?pretty&pretty'
+curl -XPUT 'localhost:9200/fungi?pretty&pretty'
+
+
+curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: application/json' -d'
+{
+  "properties": {
+    "coordinate_point": {
+      "type": "geo_point"
+    },
+    "datasetTitle" : {
+      "type" : "completion"
+    },
+    "kingdom": {
+      "type":  "keyword"
+    },
+    "phylum": {
+      "type":  "keyword"
+    },
+    "class": {
+      "type":  "keyword"
+    },
+    "order": {
+      "type":  "keyword"
+    },
+    "family": {
+      "type":  "keyword"
+    },
+    "genus": {
+      "type":  "keyword"
+    },
+    "issue": {
+      "type":  "keyword"
+    },
+    "media_type": {
+      "type":  "keyword"
+    },
+    "countryCode": {
+      "type": "keyword"
+    },
+    "basisOfRecord": {
+      "type":  "keyword"
+    },
+    "taxonKey": {
+      "type":  "keyword"
+    },
+    "datasetKey": {
+      "type":  "keyword"
+    },
+    "institutionCode": {
+      "type":  "keyword"
+    },
+    "rank": {
+      "type":  "keyword"
+    },
+    "recordedby": {
+      "type":  "keyword"
+    },
+    "backbone": {
+        "properties": {
+          "taxonKey": {
+              "type": "keyword"
+          },
+          "name": {
+              "type": "keyword"
+          }
+        }
+    }
+  }
+}
+'
