@@ -35,6 +35,9 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
     "media_type": {
       "type":  "keyword"
     },
+    "image": {
+      "type":  "keyword"
+    },
     "countryCode": {
       "type": "keyword"
     },
@@ -54,7 +57,16 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
       "type":  "keyword"
     },
     "recordedby": {
-      "type":  "keyword"
+      "type":  "keyword",
+      "copy_to": "freetext" 
+    },
+    "catalogNumber": {
+      "type":  "keyword",
+      "copy_to": "freetext" 
+    },
+    "locality": {
+      "type": "text",
+      "copy_to": "freetext" 
     },
     "backbone": {
         "properties": {
@@ -65,6 +77,9 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
               "type": "keyword"
           }
         }
+    },
+    "freetext": {
+      "type": "text"
     }
   }
 }

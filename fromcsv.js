@@ -1,7 +1,6 @@
-const name = 'fungi';
+const name = 'pheidole';
 const sourcePath = __dirname + `/sources/${name}/`;
 const occurrencePath = sourcePath + 'occurrence.txt';
-const parseString = require('xml2js').parseString;
 const _ = require('lodash');
 const parse = require('csv-parse');
 const transform = require('stream-transform');
@@ -92,10 +91,13 @@ transformer = transform(function(row, next){
         "locality": row.locality,
         "basisOfRecord": row.basisOfRecord,
         "institutionCode": row.institutionCode,
+        "occurrenceRemarks": row.occurrenceRemarks,
+        "municipality": row.municipality,
+        "locality": row.locality,
+        "catalogNumber": row.catalogNumber,
+        "dynamicProperties": row.dynamicProperties,
         "year": _.toSafeInteger(row.year),
-        "evendate": row.eventDate,
-        "media_type": ['STILL_IMAGE'],
-        "imageIdentifier": 'http://collections.nmnh.si.edu/media/index.php?irn=7005184'
+        "evendate": row.eventDate
     };
     // console.log(o);
     // next();
@@ -146,7 +148,7 @@ function doBulkIndex(list) {
     return new Promise((resolve, reject) => {
         var actions = [];
         list.forEach(function(e){
-            actions.push({index: {_index: name, _type: 'occurrence'}});
+            actions.push({index: {_index: name, _type: 'occurrence', _id: e.gbifID}});
             actions.push(e);
         });
         // console.log(actions);
