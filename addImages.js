@@ -1,4 +1,4 @@
-const name = 'pheidole';
+const name = 'svampeatlas';
 const sourcePath = __dirname + `/sources/${name}/`;
 const multimediaPath = sourcePath + 'multimedia.txt';
 const _ = require('lodash');

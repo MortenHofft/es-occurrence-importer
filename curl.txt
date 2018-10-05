@@ -8,9 +8,6 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
     "coordinate_point": {
       "type": "geo_point"
     },
-    "datasetTitle" : {
-      "type" : "completion"
-    },
     "kingdom": {
       "type":  "keyword"
     },
@@ -74,7 +71,7 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
               "type": "keyword"
           },
           "name": {
-              "type": "keyword"
+              "type": "text"
           }
         }
     },

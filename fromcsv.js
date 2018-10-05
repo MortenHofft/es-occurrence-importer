@@ -1,7 +1,8 @@
-const name = 'pheidole';
+const name = 'fungi';
 const sourcePath = __dirname + `/sources/${name}/`;
 const occurrencePath = sourcePath + 'occurrence.txt';
 const _ = require('lodash');
+const datasetTitles = require(sourcePath + 'dataset/datasteTitles');
 const parse = require('csv-parse');
 const transform = require('stream-transform');
 const fs = require('fs');
@@ -78,7 +79,7 @@ transformer = transform(function(row, next){
         // "backboneMap": backboneMap,
         "issue": issue,
         "datasetKey": row.datasetKey,
-        // "datasetTitle": datasetTitles[row.datasetKey] || 'Unknown',
+        "datasetTitle": datasetTitles[row.datasetKey] || 'Unknown',
         "countryCode": row.countryCode,
         "month": _.toSafeInteger(row.month),
         "recordedby": row.recordedBy,
@@ -95,10 +96,17 @@ transformer = transform(function(row, next){
         "municipality": row.municipality,
         "locality": row.locality,
         "catalogNumber": row.catalogNumber,
-        "dynamicProperties": row.dynamicProperties,
         "year": _.toSafeInteger(row.year),
         "evendate": row.eventDate
     };
+    if (row.dynamicProperties) {
+        try{
+            let dynProp = JSON.parse(row.dynamicProperties);
+            o.dynamicProperties = dynProp;
+        } catch(err) {
+            o.dynamicProperties = row.dynamicProperties;
+        }
+    }
     // console.log(o);
     // next();
     addToIndex(o).then(function(){
