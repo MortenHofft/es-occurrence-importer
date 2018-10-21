@@ -50,12 +50,20 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
     "institutionCode": {
       "type":  "keyword"
     },
+    "organismID": {
+      "type":  "keyword"
+    },
     "rank": {
       "type":  "keyword"
     },
-    "recordedby": {
+    "recordedBy": {
       "type":  "keyword",
-      "copy_to": "freetext" 
+      "copy_to": "freetext" ,
+      "fields": {
+        "suggest": {
+        "type": "completion"
+        }
+      }
     },
     "catalogNumber": {
       "type":  "keyword",
@@ -64,6 +72,19 @@ curl -XPUT 'localhost:9200/fungi/_mapping/occurrence?pretty' -H 'Content-Type: a
     "locality": {
       "type": "text",
       "copy_to": "freetext" 
+    },
+    "gadm": {
+      "properties": {
+        "GID_0": {
+          "type": "keyword"
+        },
+        "GID_1": {
+          "type": "keyword"
+        },
+        "GID_2": {
+          "type": "keyword"
+        }
+      }
     },
     "backbone": {
         "properties": {

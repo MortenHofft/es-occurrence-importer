@@ -1,4 +1,4 @@
-const name = 'svampeatlas';
+const name = 'fungi';
 const sourcePath = __dirname + `/sources/${name}/`;
 const multimediaPath = sourcePath + 'multimedia.txt';
 const _ = require('lodash');
@@ -8,7 +8,7 @@ const fs = require('fs');
 const elasticsearch = require('elasticsearch');
 
 var client = new elasticsearch.Client({
-  host: 'localhost:9200'
+  host: 'es1.gbif-dev.org:9200'
 });
 
 // let options = {delimiter: '\t'};

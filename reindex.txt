@@ -1,0 +1,19 @@
+curl -X POST "es1.gbif-dev.org:9200/_reindex?wait_for_completion=false&timeout=10m&scroll=60m" -H 'Content-Type: application/json' -d'
+{
+  "source": {
+    "index": "all_fungi"
+  },
+  "dest": {
+    "index": "some_fungi"
+  }
+}
+'
+
+
+
+http://es1.gbif-dev.org:9200/_tasks
+
+cancel task
+curl -X POST "es1.gbif-dev.org:9200/_tasks/eZMjdfgaR6WgCMCEcEJdwA:270342/_cancel"
+
+won't cancel eZMjdfgaR6WgCMCEcEJdwA:270342

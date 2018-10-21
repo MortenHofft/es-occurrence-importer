@@ -1,4 +1,4 @@
-const name = 'pheidole';
+const name = 'organism24';
 const sourcePath = __dirname + `/sources/${name}/dataset/`;
 
 const fs = require('fs');
